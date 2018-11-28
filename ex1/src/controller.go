@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func main() {
+func Kontrol() *gin.Engine {
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/**/*html")
 	r.GET("/", func(c *gin.Context) {
@@ -14,6 +14,7 @@ func main() {
 	})
 	r.GET("/login", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "login.html", nil)
+
 	})
-	r.Run(":8000")
+	return r
 }
