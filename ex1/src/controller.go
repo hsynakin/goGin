@@ -39,7 +39,5 @@ func registerRoutes() *gin.Engine {
 		c.HTML(http.StatusOK, "admin-overview.html", nil)
 	})
 
-	r.Static("/public", "./public")
-
 	return r
 }
