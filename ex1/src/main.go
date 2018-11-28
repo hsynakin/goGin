@@ -1,7 +1,7 @@
 package main
 
 func main() {
-	r := Kontrol()
+	r := registerRoutes()
 
 	r.Run(":8000")
 }
