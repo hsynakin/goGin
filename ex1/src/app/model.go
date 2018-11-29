@@ -1,10 +1,30 @@
-package app
+package main
 
 import "time"
 
+// ...Employee
+type Employee struct {
+	ID        uint
+	FirstName string `form:"firstName"`
+	LastName  string `form:"lastName"`
+	StartDate time.Time
+	Position  string  `form:"position"`
+	TotalPTO  float32 `form:"pto"`
+	Status    string
+	TimesOff  []TimeOff
+}
+
+// ...TimeOff
+type TimeOff struct {
+	Type      string
+	Amount    float32
+	StartDate time.Time
+	Status    string
+}
+
 var employees = map[string]Employee{
 	"962134": Employee{
-		Id:        962134,
+		ID:        962134,
 		FirstName: "Jennifer",
 		LastName:  "Watson",
 		Position:  "CEO",
@@ -13,29 +33,29 @@ var employees = map[string]Employee{
 		TotalPTO:  30,
 	},
 	"176158": Employee{
-		Id:        176158,
+		ID:        176158,
 		FirstName: "Allison",
 		LastName:  "Jane",
-		Position:  "CEO",
+		Position:  "COO",
 		StartDate: time.Now().Add(-4 * time.Hour * 24 * 365),
 		Status:    "Active",
-		TotalPTO:  30,
+		TotalPTO:  20,
 	},
-	"423313": Employee{
-		Id:        423313,
-		FirstName: "das",
-		LastName:  "dasg",
+	"160898": Employee{
+		ID:        160898,
+		FirstName: "Aakar",
+		LastName:  "Uppal",
 		Position:  "CTO",
 		StartDate: time.Now().Add(-6 * time.Hour * 24 * 365),
 		TotalPTO:  20,
 	},
-	"765234": Employee{
-		Id:        765234,
-		FirstName: "ytr",
-		LastName:  "dasıug",
+	"297365": Employee{
+		ID:        297365,
+		FirstName: "Jonathon",
+		LastName:  "Anderson",
 		Position:  "Worker Bee",
 		StartDate: time.Now().Add(-12 * time.Hour * 24 * 365),
-		TotalPTO:  25,
+		TotalPTO:  30,
 	},
 }
 
@@ -49,31 +69,13 @@ var TimesOff = map[string][]TimeOff{
 		}, {
 			Type:      "PTO",
 			Amount:    16.,
-			StartDate: time.Date(2016, 8, 1, 0, 0, 0, 0, time.UTC),
+			StartDate: time.Date(2016, 8, 16, 0, 0, 0, 0, time.UTC),
 			Status:    "Scheduled",
 		}, {
 			Type:      "PTO",
 			Amount:    16.,
-			StartDate: time.Date(2016, 12, 1, 0, 0, 0, 0, time.UTC),
+			StartDate: time.Date(2016, 12, 8, 0, 0, 0, 0, time.UTC),
 			Status:    "Requested",
 		},
 	},
-}
-
-type Employee struct {
-	Id        uint
-	FirstName string
-	LastName  string
-	StartDate time.Time
-	Position  string
-	TotalPTO  float32
-	Status    string
-	TimesOff  []TimeOff
-}
-
-type TimeOff struct {
-	Type      string
-	Amount    float32
-	StartDate time.Time
-	Status    string
 }
