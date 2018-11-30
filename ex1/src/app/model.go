@@ -2,26 +2,6 @@ package main
 
 import "time"
 
-// ...Employee
-type Employee struct {
-	ID        uint
-	FirstName string `form:"firstName"`
-	LastName  string `form:"lastName"`
-	StartDate time.Time
-	Position  string  `form:"position"`
-	TotalPTO  float32 `form:"pto"`
-	Status    string
-	TimesOff  []TimeOff
-}
-
-// ...TimeOff
-type TimeOff struct {
-	Type      string
-	Amount    float32
-	StartDate time.Time
-	Status    string
-}
-
 var employees = map[string]Employee{
 	"962134": Employee{
 		ID:        962134,
@@ -78,4 +58,22 @@ var TimesOff = map[string][]TimeOff{
 			Status:    "Requested",
 		},
 	},
+}
+
+type Employee struct {
+	ID        uint
+	FirstName string `form:"firstName"`
+	LastName  string `form:"lastName"`
+	StartDate time.Time
+	Position  string  `form:"position"`
+	TotalPTO  float32 `form:"pto"`
+	Status    string
+	TimesOff  []TimeOff
+}
+
+type TimeOff struct {
+	Type      string    `json:"reason" binding:"required"`
+	Amount    float32   `json:"hours" binding:"required,gt=0"`
+	StartDate time.Time `json:"startDate" binding:"required"`
+	Status    string    `json:"status" binding:"required"`
 }

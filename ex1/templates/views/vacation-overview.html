@@ -35,21 +35,22 @@
           </div>
         </div>
         {{range .TimesOff}}
-        <div class="row col-lg-12">
-          <div class="col-lg-3">{{".StartDate.Format 01-Jan"}}</div>
-          <div class="col-lg-2">{{.Amount}}</div>
-          <div class="col-lg-2">{{.Type}}</div>
-          <div class="col-lg-2">{{.Status}}}</div>
-          <div class="col-lg-3">
-            <button class="btn primary-lighten-1"
-            {{if eq .Status "Taken"}} 
-            disabled
-             {{end}}
-             >Edit</button>
+          <div class="row col-lg-12">
+            <div class="col-lg-3">{{.StartDate.Format "2-Jan"}}</div>
+            <div class="col-lg-2">{{.Amount}}</div>
+            <div class="col-lg-2">{{.Type}}</div>
+            <div class="col-lg-2">{{.Status}}</div>
+            <div class="col-lg-3">
+              <button class="btn primary-lighten-1"
+              {{if eq .Status "Taken"}}
+                disabled
+              {{end}}
+              >
+                Edit
+              </button>
+            </div>
           </div>
-        </div>
         {{end}}
-       
       </div>
     </div>
 </div>
